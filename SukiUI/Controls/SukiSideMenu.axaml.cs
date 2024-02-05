@@ -57,6 +57,7 @@ public class SukiSideMenu : SelectingItemsControl
 
     private IDisposable? _subscriptionDisposable;
     private IDisposable? _contentDisposable;
+    private SukiTransitioningContentControl _contentPresenter;
     
     public SukiSideMenu()
     {
@@ -102,21 +103,28 @@ public class SukiSideMenu : SelectingItemsControl
                 .Subscribe(_ => spacer.IsVisible = IsSpacerVisible);
         }
 
+        // THIS CHANGE ON ITEM CHANGED THE VIEW
         if (e.NameScope.Get<SukiTransitioningContentControl>("PART_TransitioningContentControl") is { } contentControl)
         {
-            _contentDisposable = this.GetObservable(SelectedItemProperty)
-                .ObserveOn(new AvaloniaSynchronizationContext())
-                .Do(obj =>
-                {
-                    contentControl.Content = obj switch
-                    {
-                        SukiSideMenuItem { PageContent: { } sukiMenuPageContent } => sukiMenuPageContent,
-                        _ => obj
-                    };
-                })
-                .Subscribe();
+            // _contentDisposable = this.GetObservable(SelectedItemProperty)
+            //     .ObserveOn(new AvaloniaSynchronizationContext())
+            //     .Do(obj =>
+            //     {
+            //         contentControl.Content = obj switch
+            //         {
+            //             SukiSideMenuItem { PageContent: { } sukiMenuPageContent } => sukiMenuPageContent,
+            //             _ => obj
+            //         };
+            //     })
+            //     .Subscribe();ň
+            _contentPresenter = contentControl;
         }
 
+    }
+
+    public void ChangeUserControl(Control control)
+    {
+        _contentPresenter.Content = control;
     }
 
     public bool UpdateSelectionFromPointerEvent(Control source)

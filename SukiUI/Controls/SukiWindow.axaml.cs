@@ -144,16 +144,16 @@ public class SukiWindow : Window
         if (e.NameScope.Find<GlassCard>("PART_TitleBarBackground") is { } titleBar)
             titleBar.PointerPressed += OnTitleBarPointerPressed;
 
-        if (e.NameScope.Find<SukiBackground>("PART_Background") is { } background)
-        {
-            background.SetAnimationEnabled(BackgroundAnimationEnabled);
-            var bgObs = this.GetObservable(BackgroundAnimationEnabledProperty)
-                .Do(enabled => background.SetAnimationEnabled(enabled))
-                .Select(_ => Unit.Default)
-                .ObserveOn(new AvaloniaSynchronizationContext());
-
-            _subscriptionDisposables = bgObs.Subscribe();
-        }
+        // if (e.NameScope.Find<SukiBackground>("PART_Background") is { } background)
+        // {
+        //     background.SetAnimationEnabled(BackgroundAnimationEnabled);
+        //     var bgObs = this.GetObservable(BackgroundAnimationEnabledProperty)
+        //         .Do(enabled => background.SetAnimationEnabled(enabled))
+        //         .Select(_ => Unit.Default)
+        //         .ObserveOn(new AvaloniaSynchronizationContext());
+        //
+        //     _subscriptionDisposables = bgObs.Subscribe();
+        // }
     }
 
     private void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)

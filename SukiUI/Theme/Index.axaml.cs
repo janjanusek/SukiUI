@@ -164,14 +164,14 @@ public partial class SukiTheme : Styles
     /// Attempts to switch the currently active background animation state to a specific value.
     /// </summary>
     /// <param name="value"></param>
-    public void SetBackgroundAnimationsEnabled(bool value) =>
-        _background?.SetAnimationEnabled(value);
+    // public void SetBackgroundAnimationsEnabled(bool value) =>
+    //     _background?.SetAnimationEnabled(value);
 
     /// <summary>
     /// Attempts to switch the currently active background animation state from whatever it is, to the opposite.
     /// </summary>
-    public void SwitchBackgroundAnimationsEnabled() =>
-        _background?.SetAnimationEnabled(_background.AnimationEnabled);
+    // public void SwitchBackgroundAnimationsEnabled() =>
+    //     _background?.SetAnimationEnabled(_background.AnimationEnabled);
 
     /// <summary>
     /// Registers a background with the instance, if one hasn't already been registered.
