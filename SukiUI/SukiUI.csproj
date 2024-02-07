@@ -30,6 +30,7 @@
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.5" />
 		<PackageReference Include="Avalonia.Skia" Version="11.0.5" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="SkiaSharp" Version="2.88.6" />
 		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.5" />
 		<PackageReference Include="Avalonia.Themes.Simple" Version="11.0.5" />

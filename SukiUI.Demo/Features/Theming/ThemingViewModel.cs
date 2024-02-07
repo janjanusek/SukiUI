@@ -34,8 +34,10 @@ public partial class ThemingViewModel : DemoPageBase
     partial void OnIsLightThemeChanged(bool value) =>
         _theme.ChangeBaseTheme(value ? ThemeVariant.Light : ThemeVariant.Dark);
 
-    partial void OnIsBackgroundAnimatedChanged(bool value) =>
-        _theme.SetBackgroundAnimationsEnabled(value);
+    partial void OnIsBackgroundAnimatedChanged(bool value)
+    {
+        // _theme.SetBackgroundAnimationsEnabled(value);
+    }
 
     [RelayCommand]
     public void SwitchToColorTheme(SukiColorTheme colorTheme) =>

@@ -22,7 +22,7 @@
                                                            Content="{TemplateBinding Content}"
                                                            ContentTemplate="{TemplateBinding ContentTemplate}" />
 
-                            <LayoutTransformControl Name="PART_ToggleTransform">
+                            <LayoutTransformControl Name="PART_ToggleTransform" IsVisible="False">
                                 <DockPanel>
                                     <Border Name="PART_BottomBorder"
                                             Height="2"

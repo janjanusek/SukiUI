@@ -10,6 +10,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SukiUI.Controls;
 
@@ -106,17 +107,20 @@ public class SukiSideMenu : SelectingItemsControl
         // THIS CHANGE ON ITEM CHANGED THE VIEW
         if (e.NameScope.Get<SukiTransitioningContentControl>("PART_TransitioningContentControl") is { } contentControl)
         {
-            // _contentDisposable = this.GetObservable(SelectedItemProperty)
-            //     .ObserveOn(new AvaloniaSynchronizationContext())
-            //     .Do(obj =>
-            //     {
-            //         contentControl.Content = obj switch
-            //         {
-            //             SukiSideMenuItem { PageContent: { } sukiMenuPageContent } => sukiMenuPageContent,
-            //             _ => obj
-            //         };
-            //     })
-            //     .Subscribe();ň
+            _contentDisposable = this.GetObservable(SelectedItemProperty)
+                .ObserveOn(new AvaloniaSynchronizationContext())
+                .Do(obj =>
+                {
+                    if (obj is SukiSideMenuItem { PageContent: { } sukiMenuPageContent })
+                    {
+                        contentControl.Content = sukiMenuPageContent;
+                    }
+                    else if (obj is ObservableValidator)
+                    {
+                        contentControl.Content = obj;
+                    }
+                })
+                .Subscribe();
             _contentPresenter = contentControl;
         }
 
