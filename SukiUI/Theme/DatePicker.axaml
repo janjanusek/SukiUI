@@ -39,10 +39,10 @@
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeControlHighlightMidBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Height" Value="40" />
+        <Setter Property="BorderThickness" Value="0 0 0 0.5" />
+        <Setter Property="Height" Value="30" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
@@ -51,7 +51,9 @@
                         <Button Name="PART_FlyoutButton"
                                 Height="{TemplateBinding Height}"
                                 Background="Transparent"
-                                BorderThickness="1"
+                                BorderThickness="0 0 0 0.5"
+                                CornerRadius="0"
+                                Padding="0 0 0 -5"
                                 IsEnabled="{TemplateBinding IsEnabled}"
                                 TemplatedControl.IsTemplateFocusTarget="True">
                             <Grid ColumnDefinitions="Auto,Auto">
@@ -60,7 +62,7 @@
                                       VerticalAlignment="Center"
                                       ColumnDefinitions="78*,Auto,132*,Auto,78*">
                                     <TextBlock Name="PART_DayTextBlock"
-                                               Padding="0,0,0,0"
+                                               Padding="10,0,0,0"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                FontFamily="{TemplateBinding FontFamily}"
@@ -69,7 +71,7 @@
                                                Foreground="{DynamicResource SukiText}"
                                                Text="day" />
                                     <TextBlock Name="PART_MonthTextBlock"
-                                               Padding="5,0,0,0"
+                                               Padding="2,0,0,0"
                                                FontFamily="{TemplateBinding FontFamily}"
                                                FontSize="{TemplateBinding FontSize}"
                                                FontWeight="{TemplateBinding FontWeight}"
